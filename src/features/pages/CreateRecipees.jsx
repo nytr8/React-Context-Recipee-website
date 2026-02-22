@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { RecipeDataContext } from "../RecipeeContext";
+import { nanoid } from "nanoid";
 
 const CreateRecipees = () => {
   const { data, setdata } = useContext(RecipeDataContext);
   const { register, handleSubmit, reset } = useForm();
   const submitHandler = (formData) => {
+    formData.id = nanoid();
     setdata([...data, formData]);
     reset();
   };
@@ -39,7 +41,7 @@ const CreateRecipees = () => {
           {...register("name")}
         />
         <select
-          {...register("gender")}
+          {...register("recipeeType")}
           className="outline-0 border-b text-xl px-1 py-2 w-full"
         >
           <option className="text-black" value="breakfast">
