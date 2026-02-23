@@ -4,15 +4,16 @@ import { useNavigate } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
 
 const Recipees = () => {
+  const storedRecipes = JSON.parse(localStorage.getItem("Recipes")) || [];
   const { data, setId } = useContext(RecipeDataContext);
   const navigate = useNavigate();
   function handleRecipe(id) {
     setId(id);
-    navigate("/recipe-details");
+    navigate(`/recipe-details/${id}`);
   }
   return (
     <div className="flex gap-5 p-10 flex-wrap m-auto">
-      {data.map((elem) => {
+      {storedRecipes.map((elem) => {
         return <RecipeCard elem={elem} handleRecipe={handleRecipe} />;
       })}
     </div>

@@ -9,9 +9,9 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         className={(e) => (e.isActive ? "text-red-500" : "")}
-        to="/about"
+        to="/liked"
       >
-        About
+        Liked
       </NavLink>
       <NavLink
         className={(e) => (e.isActive ? "text-red-500" : "")}
